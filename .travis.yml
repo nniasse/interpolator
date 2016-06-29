@@ -1,0 +1,21 @@
+# Enable C++ support
+language: cpp
+
+# Compiler selection
+compiler:
+  - clang
+  - gcc
+  
+# Build steps
+script:
+  - mkdir build
+  - cd build
+  - cmake .. && make
+  - ./interpolator
+  
+after_success:
+  - coveralls --root .. -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
+  
+  
+  
+  
