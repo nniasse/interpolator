@@ -191,25 +191,8 @@ Cuboid3d<T>::Cuboid3d(Origin3d<T> origin, Spacing3d<T> spacing, Data3d<T> corner
 	  ymin(origin[1]), ymax(origin[1] + spacing[1]),
 	  zmin(origin[2]), zmax(origin[2] + spacing[2]),
 	  one_dx(one / spacing[0]), one_dy(one / spacing[1]), one_dz(one / spacing[2])
-//Cuboid3d<T>::Cuboid3d(const T origin[3], const T spacing[3], const T data[2][2][2])
 {
-
 	memcpy(data, cornerData, sizeof(Data3d<T>));
-
-//	for (size_t k = 0; k < 2; k++)
-//	{
-//		for (size_t j = 0; j < 2; j++)
-//		{
-//			for (size_t i = 0; i < 2; i++)
-//			{
-//				data[k][j][i] = cornerData[k][j][i];
-//			}
-//		}
-//	}
-
-	//mydata = data;
-	//std::array<T,sizeof(data)> mydata = data ;
-//	system("pause");
 }
 
 /* The actual interpolator */
@@ -241,110 +224,9 @@ T Cuboid3d<T>::operator()(T x, T y, T z)
 			data[1][1][1] * x1*y1*z1 ;
 }
 
-///* The actual interpolation */
-//template < typename T >
-//T const & Cuboid3d<T>::operator()(T x, T y, T z) const
-//{
-//	T x0, x1, y0, y1, z0, z1;
-//
-//	x1 = std::min(std::max(x, xmin), xmax); // safety
-//	y1 = std::min(std::max(y, ymin), ymax); // safety
-//	z1 = std::min(std::max(z, zmin), zmax); // safety
-//
-//	x1 = (x1 - xmin)*one_dx;
-//	y1 = (y1 - ymin)*one_dy;
-//	z1 = (z1 - zmin)*one_dz;
-//
-//	x0 = one - x1;
-//	y0 = one - y1;
-//	z0 = one - z1;
-//
-//	/* Note: we can speed it up by developing the coefficients but that's not the point of the exercise here*/
-//	return  data[0][0][0] * x0*y0*z0 +
-//		data[1][0][0] * x1*y0*z0 +
-//		data[0][1][0] * x0*y1*z0 +
-//		data[1][1][0] * x1*y1*z0 +
-//		data[0][0][1] * x0*y0*z1 +
-//		data[1][0][1] * x1*y0*z1 +
-//		data[0][1][1] * x0*y1*z1 +
-//		data[1][1][1] * x1*y1*z1;
-//}
-
-
-//template < typename T >
-//Cuboid3d<T>::Cuboid3d()
-//{
-//}
-
 template < typename T >
 Cuboid3d<T>::~Cuboid3d()
 {
 }
 ////////////////////////////////////////////////////////////////////////////////////
 
-//template < typename T >
-//class CornerValues
-//{
-//public:
-//	CornerValues();
-//	~CornerValues();
-//
-//private:
-//
-//};
-//
-//CornerValues::CornerValues()
-//{
-//}
-//
-//template < typename T >
-//CornerValues<T>::~CornerValues()
-//{
-//}
-//
-//
-//
-//
-//
-//
-//template < typename T >
-//class Cuboid
-//{
-//public:
-//	Cuboid(T x0, T x1, T a0, T a1);
-//	Cuboid(T x0, T x1, T y0, T z1, T a00, T a01, T a10, T a11);
-//	Cuboid(T x0, T a000, T a001, T a010, T a011, T a100, T a101, T a110, T a111);
-//
-//	~Cuboid();
-//
-//private:
-//	static const T one;
-//	float c;
-//};
-//
-//template <>
-//const float Cuboid<float>::one = 1.0f;
-//
-//template <>
-//const double Cuboid<double>::one = 1.0;
-//
-//template < typename T >
-//Cuboid<T>::Cuboid(T a0, T a1)
-//{
-//}
-//
-//template < typename T >
-//Cuboid<T>::Cuboid(T a00, T a01, T a10, T a11)
-//{
-//
-//}
-//
-//template < typename T >
-//Cuboid<T>::Cuboid(T a000, T a001, T a010, T a011, T a100, T a101, T a110, T a111)
-//{
-//}
-//
-//template < typename T >
-//Cuboid<T>::~Cuboid()
-//{
-//}
