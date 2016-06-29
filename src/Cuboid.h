@@ -16,6 +16,7 @@ template < typename T >
 class Cuboid1d
 {
 public:
+	Cuboid1d(){};
 	Cuboid1d(Origin1d<T> origin, Spacing1d<T> spacing, Data1d<T> cornerData);
 	T operator()(T x);
 	~Cuboid1d();
@@ -82,6 +83,7 @@ template < typename T >
 class Cuboid2d
 {
 public:
+	Cuboid2d(){};
 	Cuboid2d(Origin2d<T> origin, Spacing2d<T> spacing, Data2d<T> cornerData);
 	T operator()(T x, T y);
 	~Cuboid2d();
@@ -157,6 +159,7 @@ template < typename T >
 class Cuboid3d
 {
 public:
+	Cuboid3d(){};
 	Cuboid3d(Origin3d<T> origin, Spacing3d<T> spacing, Data3d<T> cornerData);
 	T operator()(T x, T y, T z);
 	//T const & operator()(T x, T y, T z) const;
