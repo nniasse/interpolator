@@ -10,7 +10,7 @@ namespace {
 	protected:
 		virtual void SetUp() {
 
-			origin[0]  = 0.0f;
+			origin[0]  = 1.0f;
 			spacing[0] = 1.0f;
 
 			data[0] = 0.0f;
@@ -27,7 +27,9 @@ namespace {
 		Cuboid1d<float> cuboid;
 
 		/* General Check function */
-		float Analytic(float x) {
+		float Analytic(float x_in) {
+
+			float x = (x_in - origin[0]) / spacing[0];
 
 			float a = data[0], b = data[1];
 
@@ -49,8 +51,8 @@ namespace {
 
 	TEST_F(Cuboid1dFloatTest, IsExact){
 
-		EXPECT_EQ(Analytic(0.5f), cuboid(0.5f));
-		EXPECT_EQ(Analytic(0.314159f), cuboid(0.314159f));
+		EXPECT_EQ(Analytic(1.5f), cuboid(1.5f));
+		EXPECT_EQ(Analytic(1.314159f), cuboid(1.314159f));
 	}
 
 	TEST_F(Cuboid1dFloatTest, IsSafeFromBufferOverflow){
@@ -67,7 +69,7 @@ namespace {
 	protected:
 		virtual void SetUp() {
 
-			origin[0] = 0.0;
+			origin[0] = 1.0;
 			spacing[0] = 1.0; 
 
 			data[0] = 0.0;
@@ -84,7 +86,9 @@ namespace {
 		Cuboid1d<double> cuboid;
 
 		/* General Check function */
-		double Analytic(double x) {
+		double Analytic(double x_in) {
+
+			double x = (x_in - origin[0]) / spacing[0];
 
 			double a = data[0], b = data[1];
 
@@ -107,8 +111,8 @@ namespace {
 
 	TEST_F(Cuboid1dDoubleTest, IsExact){
 
-		EXPECT_EQ(Analytic(0.5), cuboid(0.5));
-		EXPECT_EQ(Analytic(0.314159265359), cuboid(0.314159265359));
+		EXPECT_EQ(Analytic(1.5), cuboid(1.5));
+		EXPECT_EQ(Analytic(1.314159265359), cuboid(1.314159265359));
 	}
 
 	TEST_F(Cuboid1dDoubleTest, IsSafeFromBufferOverflow){
@@ -125,7 +129,7 @@ namespace {
 	protected:
 		virtual void SetUp() {
 
-			origin[0] = 0.0f; origin[1] = 0.0f;
+			origin[0] = 1.0f; origin[1] = 1.0f;
 			spacing[0] = 1.0f; spacing[1] = 1.0f;
 
 			data[0][0] = 0.0f;
@@ -144,7 +148,10 @@ namespace {
 		Cuboid2d<float> cuboid;
 
 		/* General Check function */
-		float Analytic(float x, float y) {
+		float Analytic(float x_in, float y_in) {
+
+			float x = (x_in - origin[0]) / spacing[0];
+			float y = (y_in - origin[1]) / spacing[1];
 
 			float a = data[0][0], b = data[1][0], c = data[0][1], d = data[1][1];
 
@@ -171,8 +178,8 @@ namespace {
 
 	TEST_F(Cuboid2dFloatTest, IsExact){
 
-		EXPECT_EQ(Analytic(0.5f, 0.5f), cuboid(0.5f, 0.5f));
-		EXPECT_EQ(Analytic(0.314159f, 0.314159f), cuboid(0.314159f, 0.314159f));
+		EXPECT_EQ(Analytic(1.5f, 1.5f), cuboid(1.5f, 1.5f));
+		EXPECT_EQ(Analytic(1.314159f, 1.314159f), cuboid(1.314159f, 1.314159f));
 	}
 
 	TEST_F(Cuboid2dFloatTest, IsSafeFromBufferOverflow){
@@ -190,7 +197,7 @@ namespace {
 	protected:
 		virtual void SetUp() {
 
-			origin[0] = 0.0; origin[1] = 0.0;
+			origin[0] = 1.0; origin[1] = 1.0;
 			spacing[0] = 1.0; spacing[1] = 1.0;
 
 			data[0][0] = 0.0;
@@ -209,7 +216,10 @@ namespace {
 		Cuboid2d<double> cuboid;
 
 		/* General Check function */
-		double Analytic(double x, double y) {
+		double Analytic(double x_in, double y_in) {
+
+			double x = (x_in - origin[0]) / spacing[0];
+			double y = (y_in - origin[1]) / spacing[1];
 
 			double a = data[0][0], b = data[1][0], c = data[0][1], d = data[1][1];
 
@@ -236,8 +246,8 @@ namespace {
 
 	TEST_F(Cuboid2dDoubleTest, IsExact){
 
-		EXPECT_EQ(Analytic(0.5, 0.5), cuboid(0.5, 0.5));
-		EXPECT_EQ(Analytic(0.314159265359, 0.314159265359), cuboid(0.314159265359, 0.314159265359));
+		EXPECT_EQ(Analytic(1.5, 1.5), cuboid(1.5, 1.5));
+		EXPECT_EQ(Analytic(1.314159265359, 1.314159265359), cuboid(1.314159265359, 1.314159265359));
 	}
 
 	TEST_F(Cuboid2dDoubleTest, IsSafeFromBufferOverflow){
@@ -255,7 +265,7 @@ namespace {
 	protected:
 		virtual void SetUp() {
 
-			origin[0]  = 0.0f; origin[1]  = 0.0f; origin[2]  = 0.0f;
+			origin[0]  = 1.0f; origin[1]  = 1.0f; origin[2]  = 1.0f;
 			spacing[0] = 1.0f; spacing[1] = 1.0f; spacing[2] = 1.0f;
 
 			data[0][0][0] = 0.0f;
@@ -278,7 +288,11 @@ namespace {
 		Cuboid3d<float> cuboid;
 
 		/* General Check function */
-		float Analytic(float x, float y, float z) {
+		float Analytic(float x_in, float y_in, float z_in) {
+
+			float x = (x_in - origin[0]) / spacing[0];
+			float y = (y_in - origin[1]) / spacing[1];
+			float z = (z_in - origin[2]) / spacing[2];
 
 			float a = data[0][0][0], b = data[1][0][0], c = data[0][1][0], d = data[1][1][0],
 				  e = data[0][0][1], f = data[1][0][1], g = data[0][1][1], h = data[1][1][1];
@@ -313,8 +327,8 @@ namespace {
 
 	TEST_F(Cuboid3dFloatTest, IsExact){
 
-		EXPECT_EQ(Analytic(0.5f, 0.5f, 0.5f), cuboid(0.5f, 0.5f, 0.5f));
-		EXPECT_EQ(Analytic(0.314159f, 0.314159f, 0.314159f), cuboid(0.314159f, 0.314159f, 0.314159f));
+		EXPECT_EQ(Analytic(1.5f, 1.5f, 1.5f), cuboid(1.5f, 1.5f, 1.5f));
+		EXPECT_EQ(Analytic(1.314159f, 1.314159f, 1.314159f), cuboid(1.314159f, 1.314159f, 1.314159f));
 	}
 
 	TEST_F(Cuboid3dFloatTest, IsSafeFromBufferOverflow){
@@ -336,7 +350,7 @@ namespace {
 	protected:
 		virtual void SetUp() {
 
-			origin[0] = 0.0; origin[1] = 0.0; origin[2] = 0.0;
+			origin[0] = 1.0; origin[1] = 1.0; origin[2] = 1.0;
 			spacing[0] = 1.0; spacing[1] = 1.0; spacing[2] = 1.0;
 
 			data[0][0][0] = 0.0;
@@ -359,7 +373,12 @@ namespace {
 		Cuboid3d<double> cuboid;
 
 		/* General Check function */
-		double Analytic(double x, double y, double z) {
+		double Analytic(double x_in, double y_in, double z_in) {
+
+
+			double x = (x_in - origin[0])/spacing[0];
+			double y = (y_in - origin[1])/spacing[1];
+			double z = (z_in - origin[2])/spacing[2];
 
 			double a = data[0][0][0], b = data[1][0][0], c = data[0][1][0], d = data[1][1][0],
 				  e = data[0][0][1], f = data[1][0][1], g = data[0][1][1], h = data[1][1][1];
@@ -393,8 +412,8 @@ namespace {
 
 	TEST_F(Cuboid3dDoubleTest, IsExact){
 
-		EXPECT_EQ(Analytic(0.5, 0.5, 0.5), cuboid(0.5, 0.5, 0.5));
-		EXPECT_EQ(Analytic(0.314159265359, 0.314159265359, 0.314159265359), cuboid(0.314159265359, 0.314159265359, 0.314159265359));
+		EXPECT_EQ(Analytic(1.5, 1.5, 1.5), cuboid(1.5, 1.5, 1.5));
+		EXPECT_EQ(Analytic(1.314159265359, 1.314159265359, 1.314159265359), cuboid(1.314159265359, 1.314159265359, 1.314159265359));
 	}
 
 	TEST_F(Cuboid3dDoubleTest, IsSafeFromBufferOverflow){
